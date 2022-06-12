@@ -38,4 +38,8 @@ contract Lottery {
     function random() private pure returns (uint256) {
         return 1;
     }
+
+    function getBalanceOfContract() public view returns (uint256) {
+        return address(this).balance;
+    }
 }
