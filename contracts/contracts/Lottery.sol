@@ -33,6 +33,8 @@ contract Lottery {
         }
     }
 
+    function deposit() public payable {}
+
     function random() private pure returns (uint256) {
         return 1;
     }
