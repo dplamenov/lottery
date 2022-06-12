@@ -5,6 +5,17 @@ contract Lottery {
     event Win(address indexed player, uint256 guess, uint256 winValue);
     event Loss(address indexed player, uint256 guess, uint256 num);
 
+    address owner;
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    modifier isOwner() {
+        require(msg.sender == owner);
+        _;
+    }
+
     function bet(uint256 guess) public payable {
         require(msg.value >= 0.5 ether, "your bet must be at least 0.5 ether");
         require(
