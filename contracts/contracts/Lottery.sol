@@ -19,15 +19,15 @@ contract Lottery {
     function bet(uint256 guess) public payable {
         require(msg.value >= 0.5 ether, "your bet must be at least 0.5 ether");
         require(
-            address(this).balance >= 3 * msg.value,
+            address(this).balance >= 2 * msg.value,
             "lottery can not accept your bed"
         );
 
         uint256 rand = random();
 
         if (rand == guess) {
-            payable(msg.sender).transfer(msg.value * 3);
-            emit Win(msg.sender, guess, msg.value * 3);
+            payable(msg.sender).transfer(msg.value * 2);
+            emit Win(msg.sender, guess, msg.value * 2);
         } else {
             emit Loss(msg.sender, guess, rand);
         }
